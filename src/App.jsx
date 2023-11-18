@@ -31,7 +31,7 @@ const App = () => {
     <BrowserRouter>
     <NavBar handleLogin={signInWithGoogle} userProfile={userProfile} />
     <Routes>
-        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/tasks" element={<Tasks />} />
     </Routes>
