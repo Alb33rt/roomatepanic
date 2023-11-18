@@ -2,12 +2,14 @@ import { useEffect, useState } from 'react';
 
 import 'firebase/auth';
 
-import { signInWithGoogle } from './firebase-config';
+import { signInWithGoogle, signOutWithGoogle } from './api/UserAPI';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import NavBar from './components/NavBar';
 import PageBody from "./components/PageBody";
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from './firebase-config';
 
 import {BrowserRouter, Route, Routes } from 'react-router-dom'
 
@@ -18,12 +20,26 @@ import Tasks from './pages/Tasks';
 const App = () => {
 
   const [userProfile, setUserProfile] = useState({
-    loggedIn: true,
+    loggedIn: false,
     username: ''
   });
 
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      setUserProfile({
+        loggedIn: true,
+        username: user
+      });
+    } else {
+      setUserProfile({
+        loggedIn: false,
+        username: ''
+      });
+    }
+  })
+
   useEffect( () => {
-    console.log(userProfile);
+
     }
   , [userProfile]);
 
@@ -31,7 +47,7 @@ const App = () => {
     <BrowserRouter>
     <NavBar handleLogin={signInWithGoogle} userProfile={userProfile} />
     <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/tasks" element={<Tasks />} />
     </Routes>
