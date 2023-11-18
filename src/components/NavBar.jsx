@@ -11,7 +11,7 @@ const NavBar = (props) => {
     return (
     <Navbar className="bg-body-tertiary">
       <Container>
-        <Navbar.Brand href="#home">Roommate Panic</Navbar.Brand>
+        <Navbar.Brand href="/Home">Roommate Panic</Navbar.Brand>
         { loggedIn ? <PageLinks /> : <div />}
         <NavBarRight loggedIn={loggedIn} handleLogin={props.handleLogin} handleLogout={props.handleLogout} />
       </Container>
@@ -32,8 +32,8 @@ const NavBarRight = (props) => {
 const PageLinks = () => {
     return (
         <Nav className="me-auto">
-          <Nav.Link href="#dashboard">Dashboard</Nav.Link>
-          <Nav.Link href="#tasks">Tasks</Nav.Link>
+          <Nav.Link href="/Dashboard">Dashboard</Nav.Link>
+          <Nav.Link href="/Tasks">Tasks</Nav.Link>
         </Nav>
     )
 }

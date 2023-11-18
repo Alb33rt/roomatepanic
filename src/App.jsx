@@ -9,7 +9,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './components/NavBar';
 import PageBody from "./components/PageBody";
 
+import {BrowserRouter, Route, Routes } from 'react-router-dom'
 
+import Home from './pages/Home';
+import Dashboard from './pages/Dashboard';
+import Tasks from './pages/Tasks';
 
 const App = () => {
 
@@ -24,10 +28,17 @@ const App = () => {
   , [userProfile]);
 
   return (
-      <div className="header">
-      <NavBar handleLogin={signInWithGoogle} userProfile={userProfile} />
-      </div>
-  )
+    <BrowserRouter>
+    <NavBar handleLogin={signInWithGoogle} userProfile={userProfile} />
+    <Routes>
+        <Route path="/home" element={<Home />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/tasks" element={<Tasks />} />
+    </Routes>
+
+    </BrowserRouter>
+
+  );
 }
 
 export default App;
