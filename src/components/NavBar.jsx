@@ -8,13 +8,13 @@ function NavBar() {
     let loggedIn = false;
     let pageType = pageID(page)
     
-    console.log(pageType)
+    //console.log(pageType)
     return (
     <Navbar className="bg-body-tertiary">
       <Container>
         <Navbar.Brand href="#home">Roommate Panic v1.0</Navbar.Brand>
         <Navbar.Toggle />
-            <Navbar.Text><a href="#dashboard">Dashboard</a>  <a href="#tasks">Tasks</a>   <a href="#groups">Group</a>  <a href="#dataanal">Stats</a></Navbar.Text>
+          <DisplayPages loggedIn = {loggedIn} />
           <BarRight pageType = {pageType} profile = {profile} loggedIn = {loggedIn}/>
       </Container>
     </Navbar>
@@ -22,7 +22,7 @@ function NavBar() {
 }
 
 const pageID = (pageType) => {
-    console.log(pageType);
+    //console.log(pageType);
     if (pageType == "userauth"){
         return 2;
     }
@@ -32,12 +32,10 @@ const pageID = (pageType) => {
 }
 
 const BarRight = (pageData) => {
-    console.log(pageData.pageType);
+    //console.log(pageData.pageType);
     if (pageData.pageType == 1){
         return(
-        <Navbar.Text>
            <Login profile = {pageData.profile} loggedIn = {pageData.loggedIn} />
-        </Navbar.Text>
         );
     }
     else if (pageData.pageType == 2){
@@ -56,7 +54,13 @@ const Login = (profile) => {
         return(<BarRight pageType = {2} />);
     }
     else{
-        return(<Navbar.Collapse className="justify-content-end">Signed in as: <a href="#profile">{name}</a><a href="#logout">Logout</a></Navbar.Collapse>);
+        return(<Navbar.Text><Navbar.Collapse className="justify-content-end">Signed in as: <a href="#profile">{name}</a><a href="#logout">Logout</a></Navbar.Collapse></Navbar.Text>);
+    }
+}
+
+const DisplayPages = (loggedIn) => {
+    if (loggedIn.loggedIn == true){
+        return(<Navbar.Text><a href="#dashboard">Dashboard</a>  <a href="#tasks">Tasks</a>   <a href="#groups">Group</a>  <a href="#dataanal">Stats</a></Navbar.Text>)
     }
 }
 
