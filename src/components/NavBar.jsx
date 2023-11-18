@@ -5,7 +5,7 @@ import Navbar from 'react-bootstrap/Navbar';
 function NavBar() {
     let page = "useraut";
     let profile = "Zachary Lai";
-    let loggedIn = false;
+    let loggedIn = true;
     let pageType = pageID(page)
     
     //console.log(pageType)
@@ -31,14 +31,14 @@ const pageID = (pageType) => {
     }
 }
 
-const BarRight = (pageData) => {
+const BarRight = (props) => {
     //console.log(pageData.pageType);
-    if (pageData.pageType == 1){
+    if (props.pageType == 1){
         return(
-           <Login profile = {pageData.profile} loggedIn = {pageData.loggedIn} />
+           <Login profile = {props.profile} loggedIn = {props.loggedIn} />
         );
     }
-    else if (pageData.pageType == 2){
+    else if (props.pageType == 2){
         return(
             <Navbar.Text>
            <a href="#login">Login</a>
@@ -47,20 +47,35 @@ const BarRight = (pageData) => {
     }
 }
 
-const Login = (profile) => {
-    let name = profile.profile;
-    let loggedIn = profile.loggedIn;
+const Login = (props) => {
+    let name = props.profile;
+    let loggedIn = props.loggedIn;
     if (loggedIn == false){
         return(<BarRight pageType = {2} />);
     }
     else{
-        return(<Navbar.Text><Navbar.Collapse className="justify-content-end">Signed in as: <a href="#profile">{name}</a><a href="#logout">Logout</a></Navbar.Collapse></Navbar.Text>);
+        return(<Navbar.Text><Navbar.Collapse className="justify-content-end">Signed in as: <a href="#profile">{name}</a><button type="button" class="btn btn-dark" href="#logout">Logout</button></Navbar.Collapse></Navbar.Text>);
     }
 }
 
-const DisplayPages = (loggedIn) => {
-    if (loggedIn.loggedIn == true){
-        return(<Navbar.Text><a href="#dashboard">Dashboard</a>  <a href="#tasks">Tasks</a>   <a href="#groups">Group</a>  <a href="#dataanal">Stats</a></Navbar.Text>)
+const DisplayPages = (props) => {
+    if (props.loggedIn == true){
+        return(<div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#dashboard">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#tasks">Tasks</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#group">Group</a>
+            </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#dataanal">Stats</a>
+          </li>
+        </ul>
+      </div>)
     }
 }
 
