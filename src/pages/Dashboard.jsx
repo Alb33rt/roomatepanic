@@ -3,7 +3,8 @@ import { Container } from 'react-bootstrap';
 import { Row } from 'react-bootstrap';
 import { Col } from 'react-bootstrap';
 
-import TaskList from '../src/components/DBoardTaskList';
+import TaskList from '../components/DBoardTaskList';
+import StatsBox from '../components/StatsBox';
 
 const Dashboard = () => {
     useEffect(() => {
@@ -25,30 +26,6 @@ const Dashboard = () => {
         </div>
     );
 };
-
-const StatsBox = () => {
-    return(<div class="card w-100">
-    <div class="card-body">
-    <h1>Your Stats</h1>
-        <div class="form-check">
-                <label class="form-check-label" for="flexCheckDefault">
-                    Default checkbox
-                </label>
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-            </input>
-       </div>
-        <div class="form-check">
-        <   label class="form-check-label" for="flexCheckChecked">
-                Checked checkbox
-            </label>
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" defaultChecked>
-            </input>
-        </div>
-        <a href="#" class="btn btn-primary">View Full Stats</a>
-    </div>
-</div>
-);
-}
 
 const Roommates = () => {
     return(<div class="card w-100">
