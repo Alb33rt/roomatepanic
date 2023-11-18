@@ -13,18 +13,19 @@ const NavBar = (props) => {
       <Container>
         <Navbar.Brand href="/">Roommate Panic</Navbar.Brand>
         { loggedIn ? <PageLinks /> : <div />}
-        <NavBarRight loggedIn={loggedIn} handleLogin={props.handleLogin} handleLogout={props.handleLogout} />
+        <NavBarRight userProfile={props.userProfile} handleLogin={props.handleLogin} handleLogout={props.handleLogout} />
       </Container>
     </Navbar>
   );
 }
 
 const NavBarRight = (props) => {
-    const loggedIn = props.loggedIn;
+    const loggedIn = props.userProfile.loggedIn;
+    const displayName = props.userProfile.username;
     const handleLogin = props.handleLogin;
     const handleLogout = props.handleLogout;
 
-    return (loggedIn ? <LogoutNavElement handleLogout={handleLogout}/> : <LoginNavElement handleLogin={handleLogin} />);
+    return (loggedIn ? <LogoutNavElement handleLogout={handleLogout} displayName={displayName} /> : <LoginNavElement handleLogin={handleLogin} />);
 }
 
 const PageLinks = () => {

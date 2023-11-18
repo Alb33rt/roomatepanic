@@ -46,8 +46,9 @@ const App = () => {
         const token = credential.accessToken;
         setUserProfile({
           loggedIn: true,
-          username: result.displayName
+          username: result.user.displayName
         });
+        console.log(result)
     })
     .catch( (error) => {
         console.log(error);
@@ -70,7 +71,7 @@ const App = () => {
 
   return (
     <BrowserRouter>
-    <NavBar handleLogin={signInWithGoogle} userProfile={userProfile} />
+    <NavBar handleLogin={signInWithGoogle} handleLogout={signOutWithGoogle} userProfile={userProfile} />
     <Routes>
         <Route path="/home" element={<Home />} />
         <Route path="/dashboard" element={<Dashboard />} />
