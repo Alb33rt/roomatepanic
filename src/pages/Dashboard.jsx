@@ -1,12 +1,18 @@
 import React, { useEffect } from 'react';
+import { Container } from 'reactstrap';
+import { Row } from 'reactstrap';
+import { Col } from 'reactstrap';
+
 const Dashboard = () => {
     useEffect(() => {
         document.title = 'My Books';
     });
     return (
         <div>
-            <div class="row">
-            <div class="card w-50">
+            <Container>
+            <Row>
+            <Col>
+            <div class="card w-100">
                 <div class="card-body">
                 <h1>Your Tasks</h1>
                 <div class="progress">
@@ -23,13 +29,15 @@ const Dashboard = () => {
                         <label class="form-check-label" for="flexCheckChecked">
                             Checked checkbox
                         </label>
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" defaultChecked>
                         </input>
                     </div>
                     <a href="#" class="btn btn-primary">View Tasks</a>
                 </div>
-            </div>
-            <div class="card w-50">
+                </div>
+            </Col>
+            <Col>
+            <div class="card w-100">
                 <div class="card-body">
                 <h1>Your Stats</h1>
                     <div class="form-check">
@@ -43,14 +51,13 @@ const Dashboard = () => {
                     <   label class="form-check-label" for="flexCheckChecked">
                             Checked checkbox
                         </label>
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" defaultChecked>
                         </input>
                     </div>
                     <a href="#" class="btn btn-primary">View Full Stats</a>
                 </div>
             </div>
-            </div>
-            <div class="card w-50">
+            <div class="card w-100">
                 <div class="card-body">
                 <h1>Your Roommates</h1>
                     <div class="form-check">
@@ -64,13 +71,16 @@ const Dashboard = () => {
                     <   label class="form-check-label" for="flexCheckChecked">
                             Checked checkbox
                         </label>
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" defaultChecked>
                         </input>
                     </div>
                     <a href="#" class="btn btn-primary">Manage Roommates</a>
                 </div>
+                </div>
+                </Col>
+                </Row>
+                </Container>
             </div>
-        </div>
     );
 };
 export default Dashboard;
