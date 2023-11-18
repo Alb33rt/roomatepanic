@@ -1,67 +1,41 @@
 import React from 'react';
-import Container from 'react-bootstrap/Container';
-import Navbar from 'react-bootstrap/Navbar';
+import { Container, Nav, Navbar } from 'react-bootstrap';
 
-function NavBar() {
-    let page = "useraut";
-    let profile = "Zachary Lai";
-    let loggedIn = false;
-    let pageType = pageID(page)
+import LoginNavElement from './LoginNavElement';
+import LogoutNavElement from './LogoutNavElement';
+
+const NavBar = (props) => {
+    const loggedIn = props.userProfile.loggedIn;
     
     //console.log(pageType)
     return (
     <Navbar className="bg-body-tertiary">
       <Container>
         <Navbar.Brand href="#home">Roommate Panic</Navbar.Brand>
-        <Navbar.Toggle />
-          <DisplayPages loggedIn = {loggedIn} />
-          <BarRight pageType = {pageType} profile = {profile} loggedIn = {loggedIn}/>
+        { loggedIn ? <PageLinks /> : <div />}
+        <NavBarRight loggedIn={loggedIn} handleLogin={props.handleLogin} handleLogout={props.handleLogout} />
       </Container>
     </Navbar>
   );
 }
 
-const pageID = (pageType) => {
-    //console.log(pageType);
-    if (pageType == "userauth"){
-        return 2;
-    }
-    else {
-        return 1;
-    }
+const NavBarRight = (props) => {
+    const loggedIn = props.loggedIn;
+    const handleLogin = props.handleLogin;
+    const handleLogout = props.handleLogin;
+
+    console.log(props)
+
+    return (loggedIn ? <LogoutNavElement handleLogout={handleLogout}/> : <LoginNavElement handleLogin={handleLogin} />);
 }
 
-const BarRight = (pageData) => {
-    //console.log(pageData.pageType);
-    if (pageData.pageType == 1){
-        return(
-           <Login profile = {pageData.profile} loggedIn = {pageData.loggedIn} />
-        );
-    }
-    else if (pageData.pageType == 2){
-        return(
-            <Navbar.Text>
-           <a href="#login">Login</a>
-          </Navbar.Text>
-        )
-    }
-}
-
-const Login = (profile) => {
-    let name = profile.profile;
-    let loggedIn = profile.loggedIn;
-    if (loggedIn == false){
-        return(<BarRight pageType = {2} />);
-    }
-    else {
-        return (<Navbar.Text><Navbar.Collapse className="justify-content-end">Signed in as: <a href="#profile">{name}</a><a href="#logout">Logout</a></Navbar.Collapse></Navbar.Text>);
-    }
-}
-
-const DisplayPages = (loggedIn) => {
-    if (loggedIn.loggedIn == true) {
-        return (<Navbar.Text><a href="#dashboard">Dashboard</a>  <a href="#tasks">Tasks</a>   <a href="#groups">Group</a>  <a href="#dataanal">Stats</a></Navbar.Text>)
-    }
+const PageLinks = () => {
+    return (
+        <Nav className="me-auto">
+          <Nav.Link href="#dashboard">Dashboard</Nav.Link>
+          <Nav.Link href="#tasks">Tasks</Nav.Link>
+        </Nav>
+    )
 }
 
 export default NavBar;

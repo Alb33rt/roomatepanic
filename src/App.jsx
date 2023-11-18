@@ -1,18 +1,31 @@
+import { useEffect, useState } from 'react';
+
 import 'firebase/auth';
 
-import Firebase from './firebase-config';
+import { signInWithGoogle } from './firebase-config';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import NavBar from './Components/NavBar';
+import NavBar from './components/NavBar';
 import PageBody from "./components/PageBody";
 
 
+
 const App = () => {
+
+  const [userProfile, setUserProfile] = useState({
+    loggedIn: true,
+    username: ''
+  });
+
+  useEffect( () => {
+    console.log(userProfile);
+    }
+  , [userProfile]);
+
   return (
-      <Firebase />
       <div className="header">
-      <NavBar />
+      <NavBar handleLogin={signInWithGoogle} userProfile={userProfile} />
       </div>
   )
 }
