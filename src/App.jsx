@@ -1,9 +1,20 @@
+import NavBar from "./components/NavBar.jsx";
+
 const App = () => {
+
+  let isLoggedIn = verifyLogin();
+
   return (
     <div>
       <p>Hello world</p>
+      <NavBar isLoggedIn = {isLoggedIn} />
     </div>
   )
 }
 
-export default App
+const verifyLogin = () => {
+  let isLoggedIn = false;
+  return isLoggedIn;
+}
+
+export default App;
