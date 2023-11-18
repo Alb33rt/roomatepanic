@@ -1,20 +1,14 @@
-import NavBar from "./components/NavBar.jsx";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import NavBar from "./components/NavBar";
+
 
 const App = () => {
-
-  let isLoggedIn = verifyLogin();
-
   return (
-    <div>
-      <p>Hello world</p>
-      <NavBar isLoggedIn = {isLoggedIn} />
+    <div class="header">
+      <NavBar />
     </div>
   )
-}
-
-const verifyLogin = () => {
-  let isLoggedIn = false;
-  return isLoggedIn;
 }
 
 export default App;
