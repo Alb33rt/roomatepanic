@@ -11,7 +11,7 @@ const NavBar = (props) => {
     return (
     <Navbar className="bg-body-tertiary">
       <Container>
-        <Navbar.Brand href="/Home">Roommate Panic</Navbar.Brand>
+        <Navbar.Brand href="/">Roommate Panic</Navbar.Brand>
         { loggedIn ? <PageLinks /> : <div />}
         <NavBarRight loggedIn={loggedIn} handleLogin={props.handleLogin} handleLogout={props.handleLogout} />
       </Container>
