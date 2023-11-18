@@ -15,3 +15,11 @@ const firebase = initializeApp(firebaseConfig);
 export const auth = getAuth(firebase);
 
 export const provider = new GoogleAuthProvider();
+
+auth.onAuthStateChanged((user) => {
+    if (user) {
+        localStorage.setItem('username', user.displayName)
+    } else {
+        localStorage.removeItem('username');
+    }
+});

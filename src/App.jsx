@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import NavBar from './components/NavBar';
 import PageBody from "./components/PageBody";
-import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut } from 'firebase/auth';
+import { GoogleAuthProvider, getAuth, onAuthStateChanged, signInWithCustomToken, signInWithPopup, signOut } from 'firebase/auth';
 import { auth, provider } from './firebase-config';
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
@@ -19,24 +19,18 @@ const App = () => {
 
   const [userProfile, setUserProfile] = useState({
     loggedIn: false,
-    username: ''
+    username: '',
   });
 
   useEffect(() => {
-    let user = auth.currentUser;
-
-    if (user) {
+    let username = localStorage.getItem('username')
+    if (username) {
       setUserProfile({
         loggedIn: true,
-        username: user.displayName
-      });
-    } else {
-      setUserProfile({
-        loggedIn: false,
-        username: ''
-      });
+        username: username
+      })
     }
-  }, [])
+  }, []);
 
   const signInWithGoogle = () => {
     signInWithPopup(auth, provider)
@@ -46,14 +40,14 @@ const App = () => {
         const token = credential.accessToken;
         setUserProfile({
           loggedIn: true,
-          username: result.user.displayName
+          username: result.user.displayName,
         });
-        console.log(result)
+        localStorage.setItem('username', user.displayName);
     })
     .catch( (error) => {
         console.log(error);
     })
-}
+  }
 
   const signOutWithGoogle = () => {
       signOut(auth)
@@ -61,8 +55,9 @@ const App = () => {
           console.log("Logged Out");   
           setUserProfile({
             loggedIn: false,
-            username: ''
+            username: '',
           });
+          localStorage.removeItem('username');
       })
       .catch((error) => {
           console.log(error);

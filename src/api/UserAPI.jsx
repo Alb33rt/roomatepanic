@@ -24,7 +24,3 @@ export const signOutWithGoogle = () => {
         console.log(error);
     })
 }
-
-onAuthStateChanged(auth, (user) => {
-    
-});
