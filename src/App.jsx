@@ -2,16 +2,14 @@ import { useEffect, useState } from 'react';
 
 import 'firebase/auth';
 
-import { signInWithGoogle, signOutWithGoogle } from './api/UserAPI';
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import NavBar from './components/NavBar';
 import PageBody from "./components/PageBody";
-import { onAuthStateChanged } from 'firebase/auth';
-import { auth } from './firebase-config';
+import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut } from 'firebase/auth';
+import { auth, provider } from './firebase-config';
 
-import {BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
@@ -24,11 +22,13 @@ const App = () => {
     username: ''
   });
 
-  onAuthStateChanged(auth, (user) => {
+  useEffect(() => {
+    let user = auth.currentUser;
+
     if (user) {
       setUserProfile({
         loggedIn: true,
-        username: user
+        username: user.displayName
       });
     } else {
       setUserProfile({
@@ -36,12 +36,37 @@ const App = () => {
         username: ''
       });
     }
-  })
+  }, [])
 
-  useEffect( () => {
+  const signInWithGoogle = () => {
+    signInWithPopup(auth, provider)
+    .then( (result) => {
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const user = result.user;
+        const token = credential.accessToken;
+        setUserProfile({
+          loggedIn: true,
+          username: result.displayName
+        });
+    })
+    .catch( (error) => {
+        console.log(error);
+    })
+}
 
-    }
-  , [userProfile]);
+  const signOutWithGoogle = () => {
+      signOut(auth)
+      .then((result) => {
+          console.log("Logged Out");   
+          setUserProfile({
+            loggedIn: false,
+            username: ''
+          });
+      })
+      .catch((error) => {
+          console.log(error);
+      })
+  }
 
   return (
     <BrowserRouter>
@@ -52,7 +77,6 @@ const App = () => {
           <Route path="/tasks" element={<Tasks />} />
       </Routes>
     </BrowserRouter>
-
   );
 }
 
