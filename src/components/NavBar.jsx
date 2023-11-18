@@ -22,9 +22,7 @@ const NavBar = (props) => {
 const NavBarRight = (props) => {
     const loggedIn = props.loggedIn;
     const handleLogin = props.handleLogin;
-    const handleLogout = props.handleLogin;
-
-    console.log(props)
+    const handleLogout = props.handleLogout;
 
     return (loggedIn ? <LogoutNavElement handleLogout={handleLogout}/> : <LoginNavElement handleLogin={handleLogin} />);
 }
