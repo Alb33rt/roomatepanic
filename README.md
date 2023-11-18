@@ -1,4 +1,8 @@
-# Getting Started with Create React App
+# Roommate Panic
+
+Website Application which prevents you from having panic attacks each time your roommate doesn't clean.
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
