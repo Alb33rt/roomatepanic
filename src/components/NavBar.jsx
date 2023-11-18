@@ -41,7 +41,7 @@ const BarRight = (props) => {
     else if (props.pageType == 2){
         return(
             <Navbar.Text>
-           <a href="#login">Login</a>
+           <button type="button" class="btn btn-dark" href="#login">Login</button>
           </Navbar.Text>
         )
     }
