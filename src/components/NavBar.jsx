@@ -12,7 +12,7 @@ function NavBar() {
     return (
     <Navbar className="bg-body-tertiary">
       <Container>
-        <Navbar.Brand href="#home">Roommate Panic v1.0</Navbar.Brand>
+        <Navbar.Brand href="#home">Roommate Panic</Navbar.Brand>
         <Navbar.Toggle />
           <DisplayPages loggedIn = {loggedIn} />
           <BarRight pageType = {pageType} profile = {profile} loggedIn = {loggedIn}/>
