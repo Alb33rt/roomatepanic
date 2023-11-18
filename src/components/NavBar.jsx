@@ -3,10 +3,10 @@ import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 
 function NavBar() {
-    let page = "dashboard";
+    let page = "useraut";
     let profile = "Zachary Lai";
-    let loggedIn = true;
-    let pageType = pageID(profile)
+    let loggedIn = false;
+    let pageType = pageID(page)
     
     console.log(pageType)
     return (
@@ -14,6 +14,7 @@ function NavBar() {
       <Container>
         <Navbar.Brand href="#home">Roommate Panic v1.0</Navbar.Brand>
         <Navbar.Toggle />
+            <Navbar.Text><a href="#dashboard">Dashboard</a>  <a href="#tasks">Tasks</a>   <a href="#groups">Group</a>  <a href="#dataanal">Stats</a></Navbar.Text>
           <BarRight pageType = {pageType} profile = {profile} loggedIn = {loggedIn}/>
       </Container>
     </Navbar>
@@ -21,7 +22,11 @@ function NavBar() {
 }
 
 const pageID = (pageType) => {
-    if ((pageType == "dashboard") || ("homepage") || ("taskpage")) {
+    console.log(pageType);
+    if (pageType == "userauth"){
+        return 2;
+    }
+    else {
         return 1;
     }
 }
@@ -35,15 +40,23 @@ const BarRight = (pageData) => {
         </Navbar.Text>
         );
     }
+    else if (pageData.pageType == 2){
+        return(
+            <Navbar.Text>
+           <a href="#login">Login</a>
+          </Navbar.Text>
+        )
+    }
 }
 
 const Login = (profile) => {
     let name = profile.profile;
     let loggedIn = profile.loggedIn;
-    if (loggedIn == false) {
-        return (<a href="#login"> Login </a>);
-    } else {
-        return (<Navbar.Collapse className="justify-content-end">Signed in as: <a href="#profile"> {name} </a><a href="#logout"> Logout </a></Navbar.Collapse>);
+    if (loggedIn == false){
+        return(<BarRight pageType = {2} />);
+    }
+    else{
+        return(<Navbar.Collapse className="justify-content-end">Signed in as: <a href="#profile">{name}</a><a href="#logout">Logout</a></Navbar.Collapse>);
     }
 }
 
