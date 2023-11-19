@@ -7,7 +7,7 @@ import { Container, Stack } from 'react-bootstrap';
 
 import { Card } from "react-bootstrap";
 
-const Roommate = () => {
+const Roommate = (props) => {
     return (
         <Card>
             <Row>
@@ -16,7 +16,7 @@ const Roommate = () => {
             <Row className="align-items-center">
             <Col className="align-items-center">
             <Row className="align-items-center">
-              <b>Roommate</b>
+              <b>{props.data}</b>
             </Row>
             <Row className="align-items-center">
             </Row>
