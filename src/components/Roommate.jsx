@@ -7,8 +7,7 @@ import { Container, Stack } from 'react-bootstrap';
 
 import { Card } from "react-bootstrap";
 
-const Roomate = () => {
-
+const Roommate = () => {
     return (
         <Card>
             <Row>
@@ -24,7 +23,6 @@ const Roomate = () => {
               <b>Roommate</b>
             </Row>
             <Row className="align-items-center">
-            <p className="mb-0">Task Progress</p>
             </Row>
             </Col>
             <Col className="col-md-2">
@@ -40,4 +38,4 @@ const Roomate = () => {
 
 
 
-export default Roomate;
+export default Roommate;

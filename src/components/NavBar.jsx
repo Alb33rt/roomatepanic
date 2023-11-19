@@ -32,7 +32,7 @@ const PageLinks = () => {
     return (
         <Nav className="me-auto">
           <Nav.Link href="/Dashboard"><b>Dashboard</b></Nav.Link>
-          <Nav.Link href="/Tasks" ><b>Tasks</b></Nav.Link>
+          <Nav.Link href="/Tasks" ><b>History</b></Nav.Link>
         </Nav>
     )
 }

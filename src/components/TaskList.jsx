@@ -1,16 +1,19 @@
 import { Stack } from "react-bootstrap"
 
 import Task from "./Task";
-import { collection, doc, getDocs, updateDoc } from "firebase/firestore";
+import { collection, doc, getDocs, query, updateDoc, where } from "firebase/firestore";
 import { db } from "../firebase-config";
 import { useEffect, useState } from "react";
+import { Row } from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
 
-const TaskList = () => {
+const TaskList = (props) => {
     const [taskList, setTaskList] = useState([]);
 
     async function handleReadTask() {
         let dataArray = [];
-        const querySnapshot = await getDocs(collection(db, 'tasks'));
+        const q = collection(db, 'tasks');
+        const querySnapshot = await getDocs(q);
         querySnapshot.forEach((doc) => {
             const data = doc.data();
             data.id = doc.id;
@@ -40,8 +43,12 @@ const TaskList = () => {
         <Stack gap={1}>
         {
             taskList.map((data) => {
-                if (!data.completed) {
+                if (props.filter == "all") {
                     return (<Task data={data} handleCompleteTask={handleCompleteTask} />)
+                } else {
+                    if (!data.completed) {
+                        return (<Task data={data} handleCompleteTask={handleCompleteTask} />)
+                    }
                 }
             })
         }
