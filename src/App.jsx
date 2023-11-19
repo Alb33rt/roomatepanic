@@ -26,6 +26,7 @@ const App = () => {
 
   useEffect(() => {
     let username = localStorage.getItem('username')
+    console.log("Running")
     if (username) {
       setUserProfile({
         loggedIn: true,

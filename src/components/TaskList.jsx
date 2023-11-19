@@ -6,6 +6,7 @@ import { auth, db } from "../firebase-config";
 import { useEffect, useState } from "react";
 import { Row } from 'react-bootstrap';
 import { Col } from 'react-bootstrap';
+import { wait } from "@testing-library/user-event/dist/utils";
 
 const TaskList = (props) => {
     const [taskList, setTaskList] = useState([]);
@@ -15,9 +16,8 @@ const TaskList = (props) => {
         let uid = '';
         if (auth.currentUser) {
             uid = auth.currentUser.uid;
-            console.log(uid)
         }
-        
+
         const q = query(collection(db, 'tasks'), where("owner", "==", uid) );
         const querySnapshot = await getDocs(q);
         querySnapshot.forEach((doc) => {
@@ -49,14 +49,14 @@ const TaskList = (props) => {
     }
 
     useEffect(() => {
-       handleReadTask();
-       const interval = setInterval(() => {
-            handleReadTask();
-       }, 10000)
-       return (() => clearInterval())
+        const sleep = ms => new Promise(r => setTimeout(r, ms));
+        sleep(500).then(() => handleReadTask());
+        setInterval(() => {
+                handleReadTask();
+        }, 10000)
+        return (() => clearInterval())
     }, []);
 
-    handleReadTask();
     return (
         <Stack gap={1}>
         {
