@@ -9,7 +9,7 @@ const Tasks = () => {
         <div>
         <Container className="mt-3 justify-content-center">
             <Row>
-                <TaskList filter="all" />
+                <TaskList filter="completed" />
             </Row>
         </Container>
         </div>

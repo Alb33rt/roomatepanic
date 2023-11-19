@@ -14,10 +14,6 @@ const Roommate = () => {
             <Card.Body>
             <Container>
             <Row className="align-items-center">
-            <Col className="col-md-1">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" defaultChecked>
-            </input>
-            </Col>
             <Col className="align-items-center">
             <Row className="align-items-center">
               <b>Roommate</b>
@@ -25,8 +21,8 @@ const Roommate = () => {
             <Row className="align-items-center">
             </Row>
             </Col>
-            <Col className="col-md-2">
-            <span className="badge bg-danger">100</span>
+            <Col className="col-md-3">
+            <span className="badge bg-danger text-wrap">Completed: 100</span>
             </Col>
             </Row>
             </Container>

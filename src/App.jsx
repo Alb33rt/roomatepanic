@@ -69,13 +69,16 @@ const App = () => {
   return (
     <BrowserRouter>
     <NavBar handleLogin={signInWithGoogle} handleLogout={signOutWithGoogle} userProfile={userProfile} />
+    { userProfile.loggedIn ? 
     <Routes>
-        <Route path="" element={<Home />} />
+        <Route path="" element={ userProfile.loggedIn ? <Dashboard /> : <Home />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/tasks" element={<Tasks />} />
         <Route path="/manageroommates" element={<ManageRoommates />} />
         <Route path="/stats" element={<Stats />} />
-    </Routes>
+    </Routes> :
+    <Home />
+    }
 
     </BrowserRouter>
   );

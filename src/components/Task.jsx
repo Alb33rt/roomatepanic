@@ -29,6 +29,16 @@ const Task = (props) => {
         });
     }
 
+    const handleUncomplete = () => {
+        console.log('reverse')
+        const handleUncompleteTask = props.handleUncompleteTask;
+        handleUncompleteTask(task.id);
+        setTask({
+            ...task,
+            completed: !task.completed,
+        });
+    }
+
     useEffect(() => {
         setTask({
             id: props.data.id,
@@ -41,15 +51,14 @@ const Task = (props) => {
     }, [])
 
     const deadline = task.deadline.toDate();
-    console.log(task.deadline.toDate().toDateString)
 
     return (
-        <Card>
+        <Card className="border shadow-sm">
             <Card.Body>
                 <Container>
                 <Row className="align-items-center">
                     <Col className="col-md-1">
-                        { task.completed ?  <UncompleteForm id={props.data.id} handleComplete={handleComplete} /> : <CompleteForm id={props.data.id} handleComplete={handleComplete} /> }
+                        { task.completed ?  <UncompleteForm id={props.data.id} handleUncomplete={handleUncomplete} /> : <CompleteForm id={props.data.id} handleComplete={handleComplete} /> }
                     </Col>
                     <Col className="align-items-center">
                         <Row className="align-items-center">

@@ -32,6 +32,16 @@ const TaskList = (props) => {
         })
     }
 
+    async function handleUncompleteTask(id) {
+        const tasksRef =  doc(db, "tasks", id);
+
+        await updateDoc(tasksRef, {
+            completed: false,
+        }).then(() => {
+            handleReadTask();
+        })
+    }
+
     useEffect(() => {
        handleReadTask();
        const interval = setInterval(() => {
@@ -44,12 +54,16 @@ const TaskList = (props) => {
         {
             taskList.map((data) => {
                 if (props.filter == "all") {
-                    return (<Task data={data} handleCompleteTask={handleCompleteTask} />)
+                    return (<Task key={data.id} data={data} handleCompleteTask={handleCompleteTask} handleUncompleteTask={handleUncompleteTask} />)
+                } else if (props.filter == "completed") {
+                    if (data.completed) {
+                        return (<Task key={data.id} data={data} handleUncompleteTask={handleUncompleteTask} />);
+                    }
                 } else {
                     if (!data.completed) {
-                        return (<Task data={data} handleCompleteTask={handleCompleteTask} />)
+                        return (<Task key={data.id} data={data} handleCompleteTask={handleCompleteTask} />)
                     }
-                }
+                }   
             })
         }
         </Stack>

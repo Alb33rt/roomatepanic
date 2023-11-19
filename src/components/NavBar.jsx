@@ -29,7 +29,7 @@ const NavBarRight = (props) => {
 }
 
 const PageLinks = () => {
-    return (
+    return (  
         <Nav className="me-auto">
           <Nav.Link href="/Dashboard"><b>Dashboard</b></Nav.Link>
           <Nav.Link href="/Tasks" ><b>History</b></Nav.Link>

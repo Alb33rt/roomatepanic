@@ -1,5 +1,6 @@
 import { Card, Stack } from "react-bootstrap";
 import TaskList from "./TaskList";
+import TaskFormModal from "./TaskFormModal";
 
 const TaskCard = () => {
     return (
@@ -11,7 +12,7 @@ const TaskCard = () => {
                     <Card.Subtitle className="mb-2 text-muted">Your daily tasks</Card.Subtitle>
                 </div>
                 <TaskList />
-                <a href="/Tasks" className="btn btn-primary" style={{width: 100}}>Edit Tasks</a>
+                <TaskFormModal />
             </Stack>
         </Card.Body>
         </Card>
