@@ -6,7 +6,7 @@ const TaskCard = () => {
         <Card>
         <Card.Body>
             <Card.Title>Tasks</Card.Title>
-            <Card.Subtitle className="mb-2 text-muted">Your daily recommendation</Card.Subtitle>
+            <Card.Subtitle className="mb-2 text-muted">Your daily tasks</Card.Subtitle>
             <TaskList />
         </Card.Body>
         </Card>
