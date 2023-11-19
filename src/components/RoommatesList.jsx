@@ -8,7 +8,7 @@ const RoommatesList = () => {
         <Roommate/>
         <Roommate />
         <Roommate />
-        <a href="/Stats" className="btn btn-primary">View Roommates</a>
+        <a href="/manageroommates" className="btn btn-primary">View Roommates</a>
     </Stack>
     );
 }
