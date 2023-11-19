@@ -4,6 +4,8 @@ import Task from "./Task";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase-config";
 import { useEffect, useState } from "react";
+import { Row } from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
 
 const TaskList = () => {
     const [taskList, setTaskList] = useState([]);
@@ -27,7 +29,7 @@ const TaskList = () => {
         <Task />
         <Task />
         <Task />
-        <a href="/Tasks" className="btn btn-primary">Edit Tasks</a>
+        <a href="/Tasks" className="btn btn-primary" style={{width: 100}}>Edit Tasks</a>
     </Stack>
     );
 }
