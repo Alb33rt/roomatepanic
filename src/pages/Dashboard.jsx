@@ -13,7 +13,7 @@ const Dashboard = () => {
     });
     return (
         <div>
-            <Container class="mt-3 justify-content-center">
+            <Container className="mt-3 justify-content-center">
                 <Row>
                     <Col>
                         <TaskCard />
