@@ -1,7 +1,7 @@
 import { Stack } from "react-bootstrap"
 
 import Task from "./Task";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, doc, getDocs, updateDoc } from "firebase/firestore";
 import { db } from "../firebase-config";
 import { useEffect, useState } from "react";
 
@@ -12,31 +12,40 @@ const TaskList = () => {
         let dataArray = [];
         const querySnapshot = await getDocs(collection(db, 'tasks'));
         querySnapshot.forEach((doc) => {
-            console.log(doc.data());
-            dataArray.push(doc.data());
+            const data = doc.data();
+            data.id = doc.id;
+            dataArray.push(data);
         });
         setTaskList(dataArray);
     }
 
+    async function handleCompleteTask(id) {
+        const tasksRef =  doc(db, "tasks", id);
+
+        await updateDoc(tasksRef, {
+            completed: true,
+        }).then(() => {
+            handleReadTask();
+        })
+    }
+
     useEffect(() => {
        handleReadTask();
+       const interval = setInterval(() => {
+            handleReadTask();
+       }, 10000)
     }, []);
 
     return (
-    <Stack gap={1}>
-<<<<<<< HEAD
+        <Stack gap={1}>
         {
             taskList.map((data) => {
-                return (<Task data={data} />)
+                if (!data.completed) {
+                    return (<Task data={data} handleCompleteTask={handleCompleteTask} />)
+                }
             })
         }
-=======
-        <Task />
-        <Task />
-        <Task />
-        <a href="/Tasks" className="btn btn-primary">Edit Tasks</a>
->>>>>>> 38e20c567ea70644a9ec14eff460f1b3e09f369b
-    </Stack>
+        </Stack>
     );
 }
 
