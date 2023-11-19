@@ -31,8 +31,8 @@ const NavBarRight = (props) => {
 const PageLinks = () => {
     return (
         <Nav className="me-auto">
-          <Nav.Link href="/Dashboard">Dashboard</Nav.Link>
-          <Nav.Link href="/Tasks">Tasks</Nav.Link>
+          <Nav.Link href="/Dashboard"><b>Dashboard</b></Nav.Link>
+          <Nav.Link href="/Tasks" ><b>Tasks</b></Nav.Link>
         </Nav>
     )
 }

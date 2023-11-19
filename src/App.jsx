@@ -14,6 +14,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
 import Tasks from './pages/Tasks';
+import ManageRoommates from './pages/ManageRoommates'
+import Stats from './pages/Stats'
 
 const App = () => {
 
@@ -71,6 +73,8 @@ const App = () => {
         <Route path="" element={<Home />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/tasks" element={<Tasks />} />
+        <Route path="/manageroommates" element={<ManageRoommates />} />
+        <Route path="/stats" element={<Stats />} />
     </Routes>
 
     </BrowserRouter>
