@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Container } from 'react-bootstrap';
+import { Container, Stack } from 'react-bootstrap';
 import { Row } from 'react-bootstrap';
 import { Col } from 'react-bootstrap';
 
@@ -14,14 +14,16 @@ const Dashboard = () => {
     });
     return (
         <div>
-            <Container>
+            <Container class="mt-3 justify-content-center">
                 <Row>
                     <Col>
                         <TaskCard />
                     </Col>
                     <Col>
-                        <StatsBox />
-                        <Roommates />
+                        <Stack gap={3}>
+                            <StatsBox />
+                            <Roommates />
+                        </Stack>
                     </Col>
                 </Row>
             </Container>
