@@ -3,7 +3,7 @@ import { Button, Navbar } from 'react-bootstrap';
 const LogoutNavElement = (props) => {
     return (
         <Navbar.Text>
-            <Button onClick={props.handleLogout} variant="dark">Logout as { props.displayName }</Button>
+            <Button onClick={props.handleLogout} variant="dark"><b>Logout as { props.displayName }</b></Button>
         </Navbar.Text>
     )
 }
