@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 import { Card } from "react-bootstrap";
 
-const Task = () => {
+const Task = (props) => {
     const [task, setTask] = useState({
         name: '',
         description: '',
@@ -13,20 +13,19 @@ const Task = () => {
         repetition: ''
     });
 
-    async function handleReadTask() {
-        const querySnapshot = await getDocs(collection(db, 'tasks'));
-        querySnapshot.forEach((doc) => {
-            console.log(doc);
-        });
-    }
-
     useEffect(() => {
-       handleReadTask();
-    }, []);
+        setTask({
+            name: props.data.name,
+            description: props.data.description,
+            completed: props.data.completed,
+            deadline: props.data.deadline,
+            repetition: props.data.repetition
+        })
+    }, [])
 
     return (
         <Card>
-            <Card.Body>This is some text within a card body.</Card.Body>
+            <Card.Body>{ task.name }</Card.Body>
         </Card>
     );
 }
