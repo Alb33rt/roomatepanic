@@ -3,7 +3,7 @@ import { Container, Stack } from 'react-bootstrap';
 import { Row } from 'react-bootstrap';
 import { Col } from 'react-bootstrap';
 
-import StatsBox from '../components/StatsBox';
+import StatCard from '../components/StatCard';
 import RoommatesCard from '../components/RoommatesCard';
 import TaskCard from '../components/TaskCard';
 
@@ -20,7 +20,7 @@ const Dashboard = () => {
                     </Col>
                     <Col>
                         <Stack gap={3}>
-                            <StatsBox />
+                            <StatCard />
                             <RoommatesCard />
                         </Stack>
                     </Col>
