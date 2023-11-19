@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDqT1OuuePcHDYud1US7_h0URerYI5s3s0",
@@ -13,12 +14,13 @@ const firebaseConfig = {
 // Initialize Firebase
 const firebase = initializeApp(firebaseConfig);
 export const auth = getAuth(firebase);
+export const db = getFirestore(firebase);
 
 export const provider = new GoogleAuthProvider();
 
 auth.onAuthStateChanged((user) => {
     if (user) {
-        localStorage.setItem('username', user.displayName)
+        localStorage.setItem('username', user.displayName);
     } else {
         localStorage.removeItem('username');
     }
