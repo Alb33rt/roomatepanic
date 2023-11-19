@@ -3,11 +3,11 @@ import TaskList from "./TaskList";
 
 const TaskCard = () => {
     return (
-        <Card>
+        <Card className="border-0 shadow">
         <Card.Body>
             <Stack gap={2}>
                 <div>
-                    <Card.Title>Tasks</Card.Title>
+                    <Card.Title className="h3">Tasks</Card.Title>
                     <Card.Subtitle className="mb-2 text-muted">Your daily tasks</Card.Subtitle>
                 </div>
                 <TaskList />

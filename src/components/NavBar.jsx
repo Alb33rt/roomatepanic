@@ -9,7 +9,7 @@ const NavBar = (props) => {
     
     //console.log(pageType)
     return (
-    <Navbar className="bg-body-tertiary">
+    <Navbar className="bg-body-tertiary shadow-sm">
       <Container>
         <Navbar.Brand href="/">Roommate Panic</Navbar.Brand>
         { loggedIn ? <PageLinks /> : <div />}
