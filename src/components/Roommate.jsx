@@ -18,7 +18,7 @@ const Roommates = () => {
             <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" defaultChecked>
             </input>
         </div>
-        <a href="#" class="btn btn-primary">Manage Roommates</a>
+        <a href="/ManageRoommates" class="btn btn-primary">Manage Roommates</a>
     </div>
     </div>
     );

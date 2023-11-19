@@ -5,6 +5,7 @@ import { Col } from 'react-bootstrap';
 
 import TaskList from '../components/DBoardTaskList';
 import StatsBox from '../components/StatsBox';
+import Roommates from '../components/Roommate';
 
 const Dashboard = () => {
     useEffect(() => {

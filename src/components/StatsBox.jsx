@@ -18,7 +18,7 @@ const StatsBox = () => {
             <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" defaultChecked>
             </input>
         </div>
-        <a href="#" class="btn btn-primary">View Full Stats</a>
+        <a href="/Stats" class="btn btn-primary">View Full Stats</a>
     </div>
 </div>
 );

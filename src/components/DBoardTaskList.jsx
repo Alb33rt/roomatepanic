@@ -21,7 +21,7 @@ const TaskList = () => {
             <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" defaultChecked>
             </input>
         </div>
-        <a href="#" class="btn btn-primary" href="/Tasks">Edit Tasks</a>
+        <a class="btn btn-primary" href="/tasks">Edit Tasks</a>
     </div>
     </div>)
     ;
