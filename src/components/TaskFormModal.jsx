@@ -31,6 +31,7 @@ function TaskFormModal() {
 
       let taskUUID = uuidv4();
 
+
       await setDoc(doc(db, "tasks", taskUUID), {
           name: formValue.name,
           description: formValue.description,
@@ -39,7 +40,7 @@ function TaskFormModal() {
           repetition: '', 
           deadline: formValue.deadline
       }).then(
-
+          
       );          
   }
 
