@@ -8,6 +8,7 @@ const TaskList = () => {
         <Task />
         <Task />
         <Task />
+        <a href="/Tasks" className="btn btn-primary">Edit Tasks</a>
     </Stack>
     );
 }
