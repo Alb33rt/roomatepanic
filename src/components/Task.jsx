@@ -6,9 +6,8 @@ import { Col } from 'react-bootstrap';
 import { Container, Stack } from 'react-bootstrap';
 
 import { Card } from "react-bootstrap";
-import CompleteForm from "./CompleteForm";
 
-const Task = (props) => {
+const Task = () => {
     const [task, setTask] = useState({
         name: '',
         description: '',
@@ -17,46 +16,21 @@ const Task = (props) => {
         repetition: ''
     });
 
-    const handleComplete = () => {
-        setTask({
-            ...task,
-            completed: !task.completed,
+    async function handleReadTask() {
+        const querySnapshot = await getDocs(collection(db, 'tasks'));
+        querySnapshot.forEach((doc) => {
+            console.log(doc);
         });
     }
 
     useEffect(() => {
-        setTask({
-            name: props.data.name,
-            description: props.data.description,
-            completed: props.data.completed,
-            deadline: props.data.deadline,
-            repetition: props.data.repetition
-        });
-    }, [])
+       handleReadTask();
+    }, []);
 
     return (
         <Card>
+            <Row>
             <Card.Body>
-<<<<<<< HEAD
-                <Container>
-                    <Row>
-                        <Col className="col-md-1">
-                            <CompleteForm />
-                        </Col>
-                        <Col>
-                            <Row>
-                                <b>{ task.name }.</b>
-                            </Row>
-                            <Row>
-                                <p>{ task.description }</p>
-                            </Row>
-                        </Col>
-                        <Col>
-                            <span className="badge badge-danger">Danger</span>
-                        </Col>
-                    </Row>
-                </Container>
-=======
             <Container>
             <Row className="align-items-center">
             <Col className="col-md-1">
@@ -76,8 +50,8 @@ const Task = (props) => {
             </Col>
             </Row>
             </Container>
->>>>>>> aab0d519d67ed4cbcabc51bfbd2e3c13330bc8be
             </Card.Body>
+            </Row>
         </Card>
     );
 }

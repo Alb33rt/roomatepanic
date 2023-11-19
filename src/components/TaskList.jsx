@@ -24,18 +24,10 @@ const TaskList = () => {
 
     return (
     <Stack gap={1}>
-<<<<<<< HEAD
-        {
-            taskList.map((data) => {
-                return (<Task data={data} />)
-            })
-        }
-=======
         <Task />
         <Task />
         <Task />
         <a href="/Tasks" className="btn btn-primary">Edit Tasks</a>
->>>>>>> 38e20c567ea70644a9ec14eff460f1b3e09f369b
     </Stack>
     );
 }
