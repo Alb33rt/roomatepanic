@@ -2,7 +2,7 @@ import { Stack } from "react-bootstrap"
 
 import Task from "./Task";
 import { collection, doc, getDocs, query, updateDoc, where } from "firebase/firestore";
-import { db } from "../firebase-config";
+import { auth, db } from "../firebase-config";
 import { useEffect, useState } from "react";
 import { Row } from 'react-bootstrap';
 import { Col } from 'react-bootstrap';
@@ -12,7 +12,13 @@ const TaskList = (props) => {
 
     async function handleReadTask() {
         let dataArray = [];
-        const q = collection(db, 'tasks');
+        let uid = '';
+        if (auth.currentUser) {
+            uid = auth.currentUser.uid;
+            console.log(uid)
+        }
+        
+        const q = query(collection(db, 'tasks'), where("owner", "==", uid) );
         const querySnapshot = await getDocs(q);
         querySnapshot.forEach((doc) => {
             const data = doc.data();
@@ -47,8 +53,10 @@ const TaskList = (props) => {
        const interval = setInterval(() => {
             handleReadTask();
        }, 10000)
+       return (() => clearInterval())
     }, []);
 
+    handleReadTask();
     return (
         <Stack gap={1}>
         {

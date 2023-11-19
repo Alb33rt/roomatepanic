@@ -69,7 +69,7 @@ const Task = (props) => {
                         </Row>
                     </Col>
                     <Col className="col-md-2">
-                        <span className="badge bg-danger">Due: {deadline.getMonth()+1}/{deadline.getDate()}</span>
+                        <span className="badge bg-danger">Due: {deadline.getMonth()+1}/{deadline.getDate()+1}</span>
                     </Col>
                 </Row>
                 </Container>
