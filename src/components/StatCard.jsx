@@ -3,7 +3,7 @@ import TaskList from "./TaskList";
 
 const StatCard = () => {
     return (
-        <Card>
+        <Card className="border-0 shadow">
         <Card.Body>
             <Stack gap={2}>
                 <div>
