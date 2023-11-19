@@ -32,21 +32,21 @@ const Task = () => {
             <Row>
             <Card.Body>
             <Container>
-            <Row>
+            <Row className="align-items-center">
             <Col className="col-md-1">
             <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" defaultChecked>
             </input>
             </Col>
-            <Col>
-            <Row>
+            <Col className="align-items-center">
+            <Row className="align-items-center">
               <b>This is some text within a card body.</b>
             </Row>
-            <Row>
-            <p>yummy</p>
+            <Row className="align-items-center">
+            <p className="mb-0">yummy</p>
             </Row>
             </Col>
-            <Col>
-            <span className="badge badge-danger">Danger</span>
+            <Col className="col-md-2">
+            <span className="badge bg-danger">100</span>
             </Col>
             </Row>
             </Container>
